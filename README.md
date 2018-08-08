@@ -3,7 +3,7 @@ Perl, PHP, Python, Java, C#, Shell example scripts. Each script is documented th
 
 # CleanList.sh
 Sorts all positional parameters given to this program into a clean list leaving them in 
-the order give whilst removing duplicate strings in the list. :: while be interpreted as :.: or :.
+the order given whilst removing duplicate strings in the list. :: while be interpreted as :.: or :.
 
 # DiskUsage.sh
 DiskUsage.sh checks all the local drives exluding /proc for a storage capacity of over 90% or 60% and sends warning logs via email accordingly. Make sure your system has Mailutils correctly installed and configured in /etc/postfx
