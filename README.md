@@ -1,5 +1,5 @@
 # Scripts
-Perl, PHP, Python, Java, C#, Shell example scripts. Each script is documented as a header within the code. Here is a summary for each scripted included within this repository 'Scripts'
+Perl, PHP, Python, Java, C#, Shell example scripts. Each script is documented through a header within the code. Here is a summary for each scripted included within this repository 'Scripts'
 
 # CleanList.sh
 Sorts all positional parameters given to this program into a clean list leaving them in 
