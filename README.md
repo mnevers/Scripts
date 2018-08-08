@@ -6,15 +6,12 @@ Sorts all positional parameters given to this program into a clean list leaving 
 the order given whilst removing duplicate strings in the list. :: will be interpreted as :.: or :.
 
 # DiskUsage.sh
-DiskUsage.sh checks all the local drives exluding /proc for a storage capacity of over 90% or 60% and sends warning logs via email accordingly. Make sure your system has Mailutils correctly installed and configured in /etc/postfx
+DiskUsage.sh checks all the local drives exluding /proc for a storage capacity of over 90% or 60% and sends warning logs via email accordingly. Make sure your system has Mailutils correctly installed and configured in /etc/postfx.
 The first positional paramater is the recipient email of this disk usage logger. For example: someone@example.com
 This program works best when setup with Crontab so as to excecute automatically and on a fixed schedule per the end users needs
 
 # matthewnevers_rps.py
-matthewnevers_rps.py reads in an arbitrary number.  The first argument (rounds)
-is used as the number of rounds if the user wants to run the program more expediently
-To execute the program simply enter python matthewnevers_rps.py (# of rounds)
-if no argument is given the program will ask at run time for a number
+matthewnevers_rps.py is a rock paper scissors game played in the terminal. The script reads in an arbitrary number.  The first argument is used as the number of rounds if the user wants to run the program more expediently. To execute the program simply enter python matthewnevers_rps.py (# of rounds) if no argument is given the program will ask at run time for a number. Once the game is being played a 0 input is rock, a 1 is paper and a 2 is scissors. The player will face off against a random number generator.
 
 # matthewnevers_sort.pl
 matthewnevers_sort.pl reads in an arbitrary number of strings from the command line and displays them sorted alphabetically
@@ -26,5 +23,5 @@ XMLManager.cs serializes large amounts of data to xml spreadsheets for easy view
 The rest of serialization occurs through Unity's PlayerPrefs in the registry with headers of 1, 2 or 3 according to current save.
 
 # CurrencyManager.cs
-This scrip was created for one of my role-playing game projects.
+This script was created for one of my role-playing game projects.
 CurrencyManager.cs will be used to add and remove currency between bank and player inventory.
