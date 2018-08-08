@@ -1,0 +1,82 @@
+#!/bin/bash
+#Matthew Nevers
+#7/2/2018
+#CleanList.sh
+#
+#Sorts all positional parameters given to this program into a clean list leaving them in 
+#the order give whilst removing duplicate strings in the list. :: while be interpreted as :.: or :.
+
+str=""
+seeking=""
+list=""
+cnt=0
+index=0
+
+for i in $@
+do
+	i=(${i// /})
+
+	if [[ ${i: -1} == ':' ]]
+	then
+		i="$i."
+	fi
+	
+	if [[ ${i::1} == ':' ]]
+	then
+		i=".$i"
+	fi
+
+	if [[ $i == *"::"* ]]
+	then
+		i="$i:."
+	fi
+
+	str="$str$i:"	
+done
+
+arr=(${str//:/ })
+
+for p in ${arr[@]}
+do
+	seeking=$p
+	count=0
+
+	for t in ${arr[@]}
+	do
+		if [ $seeking == $t ]
+		then
+			let "count++"
+			if [[ $count > 1 ]]
+			then
+				unset arr[$index]
+			fi
+		fi	
+	done
+	
+	let "index++"
+done
+
+for i in ${arr[@]}
+do
+	let "cnt++"
+
+	if [[ ${arr: -1} == ':' ]]
+	then
+		i="$i."
+	fi
+	
+	if [[ ${i::1} == ':' ]]
+	then
+		i=".$i"
+	fi
+	
+	if [[ $cnt -eq ${#arr[@]} ]]
+	then
+		list="$list$i"
+		break
+	fi
+
+	list="$list$i:"
+done
+
+echo ${list[@]}

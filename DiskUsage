@@ -1,0 +1,41 @@
+#!/bin/bash
+#Matthew Nevers
+#6/19/2018
+#
+#DiskUsage.sh checks all the local drives exluding /proc for a storage capacity of over 90% or 60% and sends warning logs via email accordingly
+#Make sure your system has Mailutils correctly installed and configured in /etc/postfx
+#The first positional paramater is the recipient email of this disk usage logger. For example: someone@example.com
+#This program works best when setup with Crontab so as to excecute automatically and on a fixed schedule per the end users needs
+
+#Grabbing the file system names and corresponding capacities
+DiskNames="$(df | awk {'print $1'} | egrep -v Filesystem)"
+DiskPercents="$(df | awk {'print $5'} | egrep -v Use | sed -e 's/\%//')"
+
+#Converts the variables into arrays using space as a delimiter
+DiskArrayN=(${DiskNames// / })
+DiskArrayP=(${DiskPercents// / })
+
+#Exclude /proc
+for (( i=0; i<${#DiskArrayN[@]}; i++))
+do
+	if [[ ${DiskArrayN[$i]} = *"/proc"* ]]
+	then
+		DiskArrayP[$i]="0"
+	fi
+done
+
+#Report warning logs to Specified email ($1) and to the terminal
+for (( i=0; i<${#DiskArrayP[@]}; i++))
+do
+	if (( ${DiskArrayP[$i]} > 90 ))
+	then
+		echo "Critical Warning: File system ${DiskArrayN[$i]} here is at ${DiskArrayP[$i]}% of capacity"
+		#echo "Please address this storage capcity issue. ${DiskArrayN[$i]} is at ${DiskArrayP[$i]}% of capacity" | mail -s "Critical Warning: File system ${DiskArrayN[$i]} here is at ${DiskArrayP[$i]}% of capacity" $1
+		
+	elif (( ${DiskArrayP[$i]} > 60 ))
+	then
+		echo "Warning: File system ${DiskArrayN[$i]} here is at ${DiskArrayP[$i]}% of capacity"
+		#echo "Please address this storage capcity issue. ${DiskArrayN[$i]} is at ${DiskArrayP[$i]}% of capacity" | mail -s "Warning: File system ${DiskArrayN[$i]} here is at ${DiskArrayP[$i]}% of capacity" $1
+	fi
+done
+
