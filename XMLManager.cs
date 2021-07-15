@@ -19,16 +19,12 @@ public class XMLManager : MonoBehaviour {
 
     private int currentSave;
     private string sceneName;
-    public GameObject aiParent;
-    public Emerald_AI[] ais;
     private bool quitting = false;
     private Image loadOverlay;
     private float loadTimer = 0f;
 
     public PlayerHealth ph;    
-    public MobDatabase mobDB;
     public PlayerEntry playerData;
-    public SpellSlotEntry spellSlotData;
 
     void Awake() {
         ins = this;
@@ -68,8 +64,6 @@ public class XMLManager : MonoBehaviour {
         }
 
         sceneName = scene.name;
-
-        LoadMobs(); 
     }
 
     private void OnApplicationQuit() {
@@ -90,7 +84,6 @@ public class XMLManager : MonoBehaviour {
         if (ph == null)
             ph = GameObject.FindGameObjectWithTag("Player").GetComponent<PlayerHealth>();
 
-        LoadSpellSlots(); 
         LoadPlayer();
     }
 
