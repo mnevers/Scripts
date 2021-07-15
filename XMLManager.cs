@@ -113,84 +113,6 @@ public class XMLManager : MonoBehaviour {
         }
     }
 
-    public void SaveSpellSlots() {
-        XmlSerializer serializer = new XmlSerializer(typeof(SpellSlotEntry));
-        FileStream stream = new FileStream(Application.dataPath + "/StreamingAssets/" + currentSave + "/spellSlotData.xml", FileMode.Create);
-        serializer.Serialize(stream, spellSlotData);
-        stream.Close();
-    }
-
-    public void LoadSpellSlots() {
-        for (int cnt = 0; cnt < 6; cnt++) {
-            spellSlotData.spellSlots[cnt] = -1;
-        }
-
-        if (System.IO.File.Exists(Application.dataPath + "/StreamingAssets/" + currentSave + "/spellSlotData.xml")) {
-            XmlSerializer serializer = new XmlSerializer(typeof(SpellSlotEntry));
-            FileStream stream = new FileStream(Application.dataPath + "/StreamingAssets/" + currentSave + "/spellSlotData.xml", FileMode.Open);
-            spellSlotData = serializer.Deserialize(stream) as SpellSlotEntry;
-            stream.Close();
-        } else {
-            Debug.LogWarning("Could not find spell slot file. Creating it...");
-            XmlSerializer serializer = new XmlSerializer(typeof(SpellSlotEntry));
-            FileStream stream = new FileStream(Application.dataPath + "/StreamingAssets/" + currentSave + "/spellSlotData.xml", FileMode.Create);
-            serializer.Serialize(stream, spellSlotData);
-            stream.Close();
-        }
-    }
-
-    public void SaveMobs() {
-        //Clear previous data
-        mobDB.mobList.Clear();
-
-        //Goes through each Ai telling to to set its data
-        for (int cnt = 0; cnt < ais.Length; cnt++) {
-            ais[cnt].SetData();
-        }
-
-        //open new xml file and save data into it.
-        XmlSerializer serializer = new XmlSerializer(typeof(MobDatabase));
-        FileStream stream = new FileStream(Application.dataPath + "/StreamingAssets/" + currentSave + "/Mobs/" + sceneName + "/mobData.xml", FileMode.Create);
-        serializer.Serialize(stream, mobDB);
-        stream.Close();
-    }
-
-    public void LoadMobs() {
-        if (System.IO.File.Exists(Application.dataPath + "/StreamingAssets/" + currentSave + "/Mobs/" + sceneName + "/mobData.xml")) {
-            XmlSerializer serializer = new XmlSerializer(typeof(MobDatabase));
-            FileStream stream = new FileStream(Application.dataPath + "/StreamingAssets/" + currentSave + "/Mobs/" + sceneName + "/mobData.xml", FileMode.Open);
-            mobDB = serializer.Deserialize(stream) as MobDatabase;
-            stream.Close();
-        } else {
-            Debug.LogWarning("Could not find mob file for this scene. Creating it...");
-            XmlSerializer serializer = new XmlSerializer(typeof(MobDatabase));
-            FileStream stream = new FileStream(Application.dataPath + "/StreamingAssets/" + currentSave + "/Mobs/" + sceneName + "/mobData.xml", FileMode.Create);
-            serializer.Serialize(stream, mobDB);
-            stream.Close();
-        }
-
-        //when we load in tell all persistent AI to get their data
-        for(int cnt = 0; cnt < ais.Length; cnt++) {
-            //ais[cnt].GetData();
-            Debug.Log(cnt);
-        }
-    }
-}
-
-[System.Serializable]
-public class MobEntry {
-    public string goName;
-    public Vector3 position;
-    public float rotY;
-    public float currentHp;
-    public bool dead;
-}
-
-[System.Serializable]
-public class MobDatabase {
-    public List<MobEntry> mobList = new List<MobEntry>();
-}
-
 [System.Serializable]
 public class PlayerEntry {
     public string playerName;
@@ -206,9 +128,4 @@ public class PlayerEntry {
     public Vector3 pos;
     public float rotY;
     public int[] affinities = new int[9];
-}
-
-[System.Serializable]
-public class SpellSlotEntry {
-    public int[] spellSlots = new int[6];
 }
