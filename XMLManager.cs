@@ -80,8 +80,6 @@ public class XMLManager : MonoBehaviour {
     public void Save() {
         PlayerPrefs.SetString(currentSave + "SceneToLoad", sceneName);
 
-        SaveMobs();   //finished
-        SaveSpellSlots(); //finished
         SavePlayer(); //finished
 
         if(!quitting) //this is because devdog already has applicationquit functionality
