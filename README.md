@@ -2,7 +2,7 @@
 Perl, PHP, Python, Java, C#, Shell example scripts. Each script is documented through a header within the code. Here is a summary for each script included within this repository
 
 # MobileNumberChange.ps1
-This PowerShell script reads in the mobile number attribute from all AD users in a give OU
+This PowerShell script reads in the mobile number attribute from all AD users in a given OU
 Removes unncessary characters I.E " " "()" etc
 Adds a leading + and a 1 for USA country code if necessary
 Script will work on phone numbers that may have already been formatted properly as well
