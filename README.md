@@ -1,5 +1,5 @@
 # Scripts
-Perl, PHP, Python, Java, C#, Shell example scripts. Each script is documented through a header within the code. Here is a summary for each script included within this repository
+These are PowerShell, Perl, PHP, Python, Java, C#, and Shell example scripts compiled from various Work . Each script is documented through a header within the code. Here is a summary for each script included within this repository
 
 # MobileNumberChange.ps1
 This PowerShell script reads in the mobile number attribute from all AD users in a given OU
