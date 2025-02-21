@@ -9,6 +9,10 @@ team to save 20 minutes each time a new user is Onboarded. Reducing repetive adm
 This Python script uses the yfinance API to get historical stock information. In this case it pulls based on passed parameter of stock ticker the open and closing price after historical earnings releases. Then at the end
 gives the cumulative average historical move and how often it closes up or down on earnings.
 
+# NasRestore.ps1
+This Powershell script was used in the event of a NAS failure in which only partical data recovery was possible from the live disks which had to then be merged with partial data availability from AWS S3 backups.
+The partial disk restore and AWS files had different Pathing to account for as well as different metadata. The files with the most recent changes were considered most viable and were picked in case of duplicates.
+
 # MobileNumberChange.ps1
 This PowerShell script reads in the mobile number attribute from all AD users in a given OU
 Removes unncessary characters I.E " " "()" etc
