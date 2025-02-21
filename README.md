@@ -20,10 +20,6 @@ Adds a leading + and a 1 for USA country code if necessary
 Script will work on phone numbers that may have already been formatted properly as well
 Ignores blank mobile fields
 
-# CleanList.sh
-Sorts all positional parameters given to this program into a clean list leaving them in 
-the order given whilst removing duplicate strings in the list. :: will be interpreted as :.: or :.
-
 # DiskUsage.sh
 DiskUsage.sh checks all the local drives exluding /proc for a storage capacity of over 90% or 60% and sends warning logs via email accordingly. Make sure your system has Mailutils correctly installed and configured in /etc/postfx.
 The first positional paramater is the recipient email of this disk usage logger. For example: someone@example.com
