@@ -1,11 +1,11 @@
 # Scripts
 These are PowerShell, Perl, PHP, Python, Java, C#, and Shell example scripts compiled from various Work, University and personal (Video Game) projects. Each script is documented through a header within the code. Here is a summary for each script included within this repository
 
-#OnBoardUser.ps1
+# OnBoardUser.ps1
 This Powershell script automatically creates a new user in Microsoft Active Directory with attributes, OU, and group membership based on existing user with the same or similar role. This script allows End User Support
 team to save 20 minutes each time a new user is Onboarded. Reducing repetive administrative workload.
 
-#historical_earnings_move.py
+# historical_earnings_move.py
 This Python script uses the yfinance API to get historical stock information. In this case it pulls based on passed parameter of stock ticker the open and closing price after historical earnings releases. Then at the end
 gives the cumulative average historical move and how often it closes up or down on earnings.
 
